@@ -8,7 +8,7 @@ il s'agit d'un projet de formation réalisé dans le cadre de la formation de d�
 Le but de ce projet est de mettre en pratique les connaissances acquises lors de la formation.
 en réalisant diverses fonctionnalités telles que:
 
-- Creer une base de données
+- ~~Creer une base de données~~
 - Créer un compte utilisateur
 - Se connecter à son compte
 - Ajouter un livre à sa bibliothèque
