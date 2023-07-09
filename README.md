@@ -1,7 +1,9 @@
 # mabibliotheque
 
 Mabibliotheque est une application web permettant de gérer sa bibliothèque personnelle.
-il s'agit d'un projet de formation réalisé dans le cadre de la formation de développeur web et web mobile de Via formation.
+il s'agit d'un projet de formation réalisé dans le cadre de la formation de développeur web et web mobile de Via formation.\*
+
+![mabibliotheque](./assests/img/mabibliotheque.png)
 
 ## But du projet
 
