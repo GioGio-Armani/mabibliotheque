@@ -1,0 +1,164 @@
+
+/* parametre generaux */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: url(../img/livre-bibliotheque-manuel-ouvert.jpg) no-repeat center/cover;
+    height: 100vh;
+}
+body::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(179, 141, 245, 0.5);
+    z-index: -10;
+}
+
+h2{
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+    font-style: italic;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+h2::after{
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    display: block;
+    margin: 7px auto;
+}
+
+/*tableau*/
+
+.tablecontainer{
+    padding-top: 15px;
+    padding-bottom: 30px;
+    margin: 0px auto;
+    width: 80%;
+    max-width: 700px;
+    background: #242446a2;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 0px black
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    max-height: 100%;
+    margin: 0px auto;
+}
+
+thead tr{
+    background: #1e1e1e;
+    color: #fff;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+thead tr th{
+    padding: 12px 10px;
+    border: #fff 1px solid;
+}
+
+tr td{
+    padding: 12px 10px;
+    border: #fff 1px solid;
+    font-size: 0.9rem;
+}
+
+.tr1{
+    background: #5C97CB;
+    color: #1e1e1e;
+}
+.tr2{
+    background: #30304E;
+    color: #fff;
+}
+
+.btn{
+    background: #FF0000;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+} 
+
+.btn:hover{
+    background: #FF0000a2;
+}
+
+/*formulaire*/
+
+.cards-form{
+    width: 99%;
+    max-width: 1000px;
+    margin: 0px auto;
+    padding: 20px 100px;
+    background: #242446a2;
+    border-radius: 10px;
+    display: flex  ;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 1px 1px 5px 0px black
+}
+
+label{
+    color: #fff;
+    font-size: 0.9rem;
+    margin: 15px 0px 5px 5px;
+}
+
+input{
+    width: 100%;
+    padding: 7px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+p{
+    margin-top: 5px;
+}
+
+#button{
+    width: 100%;
+    padding: 7px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    background: #37AF65;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s ease-in-out;
+    box-shadow: 1px 1px 5px 0px black
+}
+
+#button:hover{
+    background: #2E8B57;
+}
+
