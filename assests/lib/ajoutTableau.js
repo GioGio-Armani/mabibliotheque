@@ -194,6 +194,29 @@ const ajoutTableau = () => {
   // incrementation de l'occurence -----------------------
   occurence++;
   storage = localStorage.setItem("livres", JSON.stringify(livres));
+
+  // requete ajax -----------------------------------------
+
+  let xhr = new XMLHttpRequest();
+  xhr.open(
+    "POST",
+    "http://localhost/mabibliotheque/assests/php/traitement.php"
+  );
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.send(
+    "isbn=" +
+      isbn +
+      "&titre=" +
+      titre +
+      "&auteur=" +
+      auteur +
+      "&editeur=" +
+      editeur
+  );
+
+  xhr.onload = () => {
+    console.log(xhr.responseText);
+  };
 };
 
 // ajout de l'evenement au bouton et touche enter -----------------------
@@ -228,4 +251,10 @@ table.addEventListener("click", (e) => {
     tr.remove();
     storage = localStorage.setItem("livres", JSON.stringify(livres));
   }
+});
+
+let form = document.querySelector("form");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 });
