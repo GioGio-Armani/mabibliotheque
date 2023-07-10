@@ -95,6 +95,7 @@ tbody tr{
     outline: none;
     padding: 5px 10px;
     border-radius: 5px;
+    margin-right: 5px;
     cursor: pointer;
     transition: background 0.2s ease-in-out;
 } 
@@ -103,19 +104,74 @@ tbody tr{
     background: #FF0000a2;
 }
 
+.btn2{
+    background: #FFA500;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.btn2:hover{
+    background: #FFA500a2;
+}
+
+/*bouton ajouter*/
+
+.btn3{
+    display: block;
+    background: #37AF65;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+    box-shadow: 1px 1px 5px 0px black;
+    margin: 10px auto;
+}
+
+.btn3:hover{
+    background: #2E8B57;
+}
 /*formulaire*/
 
+.ajoutlivre{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-300px, 0px);
+    opacity: 0;
+    transition:  0.5s ease-in-out;
+    visibility: hidden;
+}
+
+.active{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(0px, 0px);
+    opacity: 1;
+    transition:  0.5s ease-in-out;
+    visibility: visible;
+}
+
 .cards-form{
-    width: 99%;
+    width: 100%;
     max-width: 1000px;
     margin: 0px auto;
-    padding: 20px 100px;
+    padding: 20px ;
     background: #242446a2;
     border-radius: 10px;
     display: flex  ;
     flex-direction: column;
     justify-content: center;
-    box-shadow: 1px 1px 5px 0px black
+    box-shadow: 1px 1px 5px 0px black;
 }
 
 label{
@@ -157,8 +213,30 @@ p{
     transition: background 0.2s ease-in-out;
     box-shadow: 1px 1px 5px 0px black
 }
+#button2{
+    width: 100%;
+    padding: 7px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    background: #37AF65;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s ease-in-out;
+    box-shadow: 1px 1px 5px 0px black
+}
+
+#button2:hover{
+    background: #2E8B57;
+}
 
 #button:hover{
     background: #2E8B57;
+}
+
+.hidden{
+    display: none;
 }
 

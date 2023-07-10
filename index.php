@@ -55,12 +55,14 @@
         </table>
     </div>
 
-    <h2>Formulaire</h2>
+    <button class="btn3">Ajouter un livre</button>
 
-    <form action="traitement.php" method="post">
+    <form class="ajoutlivre" action="traitement.php" method="post">
 
 
+        <h2>Formulaire</h2>
         <div class="cards-form">
+
             <label for="isbn">ISBN</label>
             <input type="number" name="isbn" id="isbn" placeholder="Entrer le numéro ISBN">
             <p class="isbnerror"></p>
@@ -74,8 +76,10 @@
             <input type="text" name="editeur" id="editeur" placeholder="Entrer la maison d'édition">
             <p class="editeurerror"></p>
             <button id="button">Envoyer</button>
+            <button id="button2" class="hidden">Modifer</button>
         </div>
     </form>
+    <script src="./assests/lib/effet.js"></script>
     <script src="./assests/lib/ajoutTableau.js"></script>
 </body>
 
