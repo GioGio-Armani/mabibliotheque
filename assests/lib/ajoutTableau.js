@@ -2,56 +2,12 @@
 
 // recuperation du tableau dans le local storage ---------------------
 
-let storage = localStorage.getItem("livres");
-
-let occurence = 0;
-let livres = JSON.parse(storage) || [];
+let livres = [];
 
 // recuperation des elements -------------------------
 let table = document.querySelector("table");
+let tbody = document.querySelector("tbody");
 let button = document.querySelector("#button");
-
-// creation des elements du tableau ------------------
-
-for (let i = 0; i < livres.length; i++) {
-  let tr = document.createElement("tr");
-  let tdIsbn = document.createElement("td");
-  let tdTitre = document.createElement("td");
-  let tdAuteur = document.createElement("td");
-  let tdEditeur = document.createElement("td");
-  let tdSupprimer = document.createElement("td");
-  let buttonSupprimer = document.createElement("button");
-  buttonSupprimer.textContent = "X";
-  buttonSupprimer.classList.add("btn");
-
-  // ajout des valeurs aux elements du tableau -----------
-
-  tdIsbn.textContent = livres[i].isbn;
-  tdTitre.textContent = livres[i].titre;
-  tdAuteur.textContent = livres[i].auteur;
-  tdEditeur.textContent = livres[i].editeur;
-  tdSupprimer.appendChild(buttonSupprimer);
-
-  // ajout des elements au tableau -----------------------
-
-  tr.appendChild(tdIsbn);
-  tr.appendChild(tdTitre);
-  tr.appendChild(tdAuteur);
-  tr.appendChild(tdEditeur);
-  tr.appendChild(tdSupprimer);
-
-  //ajout du style a la ligne ---------------------------
-
-  if (i % 2 == 0) {
-    tr.classList.add("tr1");
-  } else {
-    tr.classList.add("tr2");
-  }
-
-  // ajout de la ligne au tableau ------------------------
-
-  table.appendChild(tr);
-}
 
 const ajoutTableau = () => {
   // recuperation des valeurs des inputs ----------------
@@ -153,6 +109,9 @@ const ajoutTableau = () => {
   let buttonSupprimer = document.createElement("button");
   buttonSupprimer.textContent = "X";
   buttonSupprimer.classList.add("btn");
+  let buttonModifier = document.createElement("button");
+  buttonModifier.textContent = "Mofifier";
+  buttonModifier.classList.add("btn2");
 
   // ajout des valeurs aux elements du tableau -----------
 
@@ -161,6 +120,7 @@ const ajoutTableau = () => {
   tdAuteur.textContent = livre.auteur;
   tdEditeur.textContent = livre.editeur;
   tdSupprimer.appendChild(buttonSupprimer);
+  tdSupprimer.appendChild(buttonModifier);
 
   // ajout des elements au tableau -----------------------
 
@@ -170,17 +130,8 @@ const ajoutTableau = () => {
   tr.appendChild(tdEditeur);
   tr.appendChild(tdSupprimer);
 
-  //ajout du style a la ligne ---------------------------
-
-  if (occurence % 2 == 0) {
-    tr.classList.add("tr1");
-  } else {
-    tr.classList.add("tr2");
-  }
-
   // ajout de la ligne au tableau ------------------------
-
-  table.appendChild(tr);
+  tbody.appendChild(tr);
 
   // reinitialisation des inputs -------------------------
 
@@ -190,10 +141,6 @@ const ajoutTableau = () => {
   document.querySelector("#editeur").value = "";
   // initialisation du focus -----------------------------
   document.querySelector("#isbn").focus();
-
-  // incrementation de l'occurence -----------------------
-  occurence++;
-  storage = localStorage.setItem("livres", JSON.stringify(livres));
 
   // requete ajax -----------------------------------------
 
@@ -232,7 +179,7 @@ document.addEventListener("keydown", (e) => {
 // suppression d'une ligne du tableau ----------------------------
 
 table.addEventListener("click", (e) => {
-  if (e.target.tagName == "BUTTON") {
+  if (e.target.classList.contains("btn")) {
     let tr = e.target.parentNode.parentNode;
     let isbn = tr.children[0].textContent;
     let titre = tr.children[1].textContent;
@@ -249,7 +196,23 @@ table.addEventListener("click", (e) => {
     });
     livres.splice(index, 1);
     tr.remove();
-    storage = localStorage.setItem("livres", JSON.stringify(livres));
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost/mabibliotheque/assests/php/delete.php");
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(
+      "isbn=" +
+        isbn +
+        "&titre=" +
+        titre +
+        "&auteur=" +
+        auteur +
+        "&editeur=" +
+        editeur
+    );
+
+    xhr.onload = () => {
+      console.log(xhr.responseText);
+    };
   }
 });
 

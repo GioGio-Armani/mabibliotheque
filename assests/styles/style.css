@@ -79,11 +79,11 @@ tr td{
     font-size: 0.9rem;
 }
 
-.tr1{
+table tbody tr:nth-child(odd){
     background: #5C97CB;
     color: #1e1e1e;
 }
-.tr2{
+tbody tr{
     background: #30304E;
     color: #fff;
 }
