@@ -1,7 +1,8 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['isbn'])) {
-        $isbn = filter_input(INPUT_POST, 'isbn', FILTER_VALIDATE_INT);
+$data = json_decode(file_get_contents('php://input'), true);
+if ($data) {
+    if (isset($data['isbn'])) {
+        $isbn = intval($data['isbn']);
 
         if ($isbn) {
             $pdo = new SQLite3('../database/db.sqlite');
@@ -15,6 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 echo json_encode(['error' => 'Aucun livre trouvé.']);
             }
+        } else {
+            echo json_encode(['error' => 'isbn est false']);
         }
+    } else {
+        echo json_encode(['error' => 'Erreur de données']);
     }
+} else {
+    echo json_encode(['error' => 'Erreur de données JSON']);
 }

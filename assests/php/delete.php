@@ -1,10 +1,11 @@
 <?php
 
 // suppression d'un livre
+$data = json_decode(file_get_contents('php://input'), true);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['isbn'])) {
-        $isbn = filter_input(INPUT_POST, 'isbn', FILTER_VALIDATE_INT);
+if ($data) {
+    if (isset($data['isbn'])) {
+        $isbn = intval($data['isbn']);
         if ($isbn) {
             $bbd = new SQLite3('../database/db.sqlite');
 
@@ -14,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->execute();
             echo "Livre supprimé";
         } else {
-            echo "Erreur de données";
+            echo "isbn est false";
             exit;
         }
     } else {
@@ -22,6 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 } else {
-    echo "Erreur de méthode";
+    echo "Erreur de données JSON";
     exit;
 }

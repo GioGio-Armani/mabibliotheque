@@ -1,11 +1,13 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['isbn']) && isset($_POST['titre']) && isset($_POST['auteur']) && isset($_POST['editeur']) && isset($_POST['id'])) {
-        $isbn = filter_input(INPUT_POST, 'isbn', FILTER_VALIDATE_INT);
-        $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
-        $titre = $_POST['titre'];
-        $auteur = $_POST['auteur'];
-        $editeur = $_POST['editeur'];
+$data = json_decode(file_get_contents('php://input'), true);
+
+if ($data) {
+    if (isset($data['isbn']) && isset($data['titre']) && isset($data['auteur']) && isset($data['editeur']) && isset($data['id'])) {
+        $isbn = intval($data['isbn']);
+        $id = intval($data['id']);
+        $titre = $data['titre'];
+        $auteur = $data['auteur'];
+        $editeur = $data['editeur'];
 
         if ($isbn && $titre && $auteur && $editeur && $id) {
             $bbd = new SQLite3('../database/db.sqlite');
@@ -20,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->execute();
             echo "Livre modifié";
         } else {
-            echo "Erreur de données";
+            echo "Erreur de données 2";
             exit;
         }
     } else {
@@ -28,6 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 } else {
-    echo "Erreur de méthode";
+    echo "Erreur de données JSON";
     exit;
 }

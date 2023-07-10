@@ -79,8 +79,12 @@
             <button id="button2" class="hidden">Modifer</button>
         </div>
     </form>
+    <script src="./assests/lib/gestionErreur.js"></script>
+    <script src="./assests/lib/modifier.js"></script>
+    <script src="./assests/lib/requeteAJAX.js"></script>
     <script src="./assests/lib/effet.js"></script>
     <script src="./assests/lib/ajoutTableau.js"></script>
+    <script src="./assests/lib/index.js"></script>
 </body>
 
 </html>
